@@ -1,3 +1,3 @@
 fun main() {
-    println("Test - 테스트")
+    println(" Test - 테스트 ")
 }
