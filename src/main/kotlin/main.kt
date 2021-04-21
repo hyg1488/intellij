@@ -13,7 +13,7 @@ fun main() {
         print("명령어 )")
         val command = readLine()
         println("입력한 명령어 : $command")
-
+        val commandArr = command!!.split(" ")
         if(command == "system exit"){
             println("프로그램 종료")
             break
@@ -33,6 +33,25 @@ fun main() {
         }else if(command == "article list"){
             println("번호 / 제목")
             for (article in articles) println("${article.id} / ${article.title} - ${article.regDate}")
+        }else if(commandArr.size == 3){
+            var ck = commandArr[0]+" "+commandArr[1]
+            var num = commandArr[2].toInt()
+            var bol = 0
+            if(ck=="article delete"){
+                for(i in articles.indices){
+                    if(articles[i].id == num){
+                        bol = 1
+                    }
+                }
+
+                if(bol ==0){
+                    println("${num}번글이 존재하지 않습니다.")
+                }else{
+                    articles.removeAt(num-1)
+                    println("${num}번글이 삭제되었습니다.")
+                }
+
+            }
         }else{
             println("$command 은(는) 존재하지 않는 명령어 입니다.")
         }
